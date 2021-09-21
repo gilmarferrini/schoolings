@@ -12,9 +12,8 @@ import {
   FlatListArea, 
   FlatListHeader,
   FlatListHeaderText,
-  SchoolingCard, 
-  SchoolingCardText,
-  DeleteButtonArea } from './styles';
+} from './styles';
+import { SchoolingCard } from '../../components/SchoolingCard';
 
 interface ISchooling {
   id: string;
@@ -56,6 +55,13 @@ export function Home() {
       return;
     }
     
+    const schoolingAlreadyExists = data.find(item => item.code === +code);
+
+    if (schoolingAlreadyExists) {
+      alert('Código já cadastrado!');
+      return;
+    }
+
     const id = new Date().getTime().toString()
 
     const newSchooling = {
@@ -120,22 +126,13 @@ export function Home() {
           data={data}
           keyExtractor={item => item.id}
           renderItem={({ item, index }) => (
-            <>
-              <SchoolingCard 
-                style={{ backgroundColor: (index % 2 === 0 ? '#c5c5c5': '#F9F5FF') }}
-              >
-                <SchoolingCardText>{item.code}</SchoolingCardText>
-                <SchoolingCardText>{item.schooling}</SchoolingCardText>
-                <DeleteButtonArea>
-                  <Button
-                    title="X"
-                    titleHexColor=""
-                    style={{ backgroundColor: 'red'}}
-                    onPress={() => removeSchooling(item.id)}
-                  />
-                </DeleteButtonArea>
-              </SchoolingCard>
-            </>
+            <SchoolingCard 
+              index={index}
+              id={item.id}
+              code={item.code}
+              schooling={item.schooling}
+              onPress={() => removeSchooling(item.id)}
+            />
           )}
         />
       </FlatListArea>
