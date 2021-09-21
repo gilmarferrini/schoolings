@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Button } from '../../components/Button';
@@ -93,7 +93,6 @@ export function Home() {
 
         <Input 
           placeholder="Entre com o código da escolaridade: "
-          placeholderTextColor="#28262C"
           keyboardType="numeric"
           value={code}
           onChangeText={value => setCode(value)}
@@ -101,7 +100,6 @@ export function Home() {
         
         <Input 
           placeholder="Entre com a escolaridade: "
-          placeholderTextColor="#28262C"
           value={schooling}
           onChangeText={value => setSchooling(value)}
         />

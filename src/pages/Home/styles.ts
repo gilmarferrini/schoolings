@@ -19,10 +19,10 @@ export const Title = styled.Text`
 export const Input = styled.TextInput`
   font-size: 16px;
   padding: 8px;
-  color: #14248A;
   background: #F9F5FF;
   margin: 8px 0;
   border-radius: 8px;
+  color: #28262C;
 `
 
 export const FlatListArea = styled.View`
